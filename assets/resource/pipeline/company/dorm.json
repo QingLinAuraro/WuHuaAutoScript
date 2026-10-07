@@ -1,0 +1,116 @@
+{
+    "dorm_enter": {
+      "doc": "【界面入口】顿舍。roi 限定左上角标题栏，避免和枢纽界面中央的「顿舍」招牌混淆。待补：活力储存领取 / 访客 / 留言板 / 顿舍布置",
+      "recognition": {
+        "type": "OCR",
+        "param": {
+          "roi": [
+            0,
+            0,
+            199,
+            73
+          ],
+          "expected": "顿舍"
+        }
+      },
+      "next": [
+        "get_stamina",
+        "dorm_back_hub"
+      ],
+      "$__mpe_code": {
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    },
+    "dorm_back_hub": {
+      "doc": "界面出口：点左上角「←」退回派遣公司枢纽",
+      "recognition": {
+        "type": "OCR",
+        "param": {
+          "roi": [
+            0,
+            0,
+            199,
+            73
+          ],
+          "expected": [
+            "顿舍"
+          ]
+        }
+      },
+      "action": {
+        "type": "Click",
+        "param": {
+          "target": [
+            30,
+            9,
+            140,
+            49
+          ]
+        }
+      },
+      "post_delay": 1500,
+      "next": [
+        "dorm_back_hub",
+        "hub_enter"
+      ],
+      "$__mpe_code": {
+        "position": {
+          "x": 581,
+          "y": 229
+        }
+      }
+    },
+    "$__mpe_config_dorm.json": {
+      "$__mpe_code": {
+        "prefix": "",
+        "coordinateMode": "absolute-v1",
+        "savedViewport": {
+          "x": 198,
+          "y": 185,
+          "zoom": 1
+        },
+        "filename": "dorm.json",
+        "version": "v2.0.7"
+      }
+    },
+    "get_stamina": {
+      "recognition": {
+        "type": "OCR",
+        "param": {
+          "roi": [
+            228,
+            646,
+            98,
+            48
+          ],
+          "expected": [
+            "领取√"
+          ]
+        }
+      },
+      "action": {
+        "type": "Click"
+      },
+      "post_delay": 1500,
+      "next": [
+        "dorm_back_hub"
+      ],
+      "$__mpe_code": {
+        "position": {
+          "x": 288,
+          "y": -79
+        }
+      }
+    },
+    "$__mpe_external_hub_enter_dorm.json": {
+      "$__mpe_code": {
+        "position": {
+          "x": 920,
+          "y": 331
+        }
+      }
+    }
+}

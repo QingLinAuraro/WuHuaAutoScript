@@ -1,0 +1,84 @@
+{
+    "main_dispatch": {
+      "doc": "主页路由：本轮哪个分支还能进就进哪个。next 里每一项都是一个分支入口，最后一位是收工出口",
+      "next": [
+        "[JumpBack]common_close_popup",
+        "main_enter_hub",
+        "main_check_done"
+      ],
+      "$__mpe_code": {
+        "position": {
+          "x": 0,
+          "y": 166
+        }
+      }
+    },
+    "main_enter_hub": {
+      "doc": "主页 → 派遣公司。max_hit:1 保证一轮任务里只进一次，否则退出来后「派遣公司」按钮还在，会被反复识到、反复进出",
+      "max_hit": 1,
+      "recognition": {
+        "type": "OCR",
+        "param": {
+          "roi": [
+            1083,
+            415,
+            167,
+            133
+          ],
+          "expected": "派遣公司"
+        }
+      },
+      "action": {
+        "type": "Click"
+      },
+      "post_delay": 1500,
+      "next": [
+        "hub_enter"
+      ],
+      "$__mpe_code": {
+        "position": {
+          "x": 330,
+          "y": 92
+        }
+      }
+    },
+    "main_check_done": {
+      "doc": "收工：主页上没有任何分支能进了。DirectHit 兜底，必须放在 next 最后一位——前面全失配时它立即命中，正常结束任务",
+      "$__mpe_code": {
+        "position": {
+          "x": -2,
+          "y": -17
+        },
+        "handleDirection": "right-left"
+      }
+    },
+    "$__mpe_config_main.json": {
+      "$__mpe_code": {
+        "prefix": "",
+        "coordinateMode": "absolute-v1",
+        "savedViewport": {
+          "x": 178,
+          "y": 101,
+          "zoom": 1.25
+        },
+        "filename": "main.json",
+        "version": "v2.0.7"
+      }
+    },
+    "$__mpe_external_common_close_popup_main.json": {
+      "$__mpe_code": {
+        "position": {
+          "x": 336,
+          "y": 12
+        }
+      }
+    },
+    "$__mpe_external_hub_enter_main.json": {
+      "$__mpe_code": {
+        "position": {
+          "x": 648,
+          "y": 174
+        }
+      }
+    }
+}

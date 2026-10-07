@@ -59,51 +59,92 @@
     //     ]
     // },
     "task": [
-        {
-            "name": "普通任务",
-            "entry": "MyTask1"
-        },
-        {
-            "name": "选项任务",
-            "entry": "MyTask2",
-            "option": [
-                "任务选项1"
-            ]
-        },
-        {
-            "name": "参数任务",
-            "entry": "MyTask3",
-            "option": [
-                "任务选项1"
-            ],
-            "pipeline_override": {}
-        },
-        {
-            "name": "带Custom的任务",
-            "entry": "MyTask4"
-        }
+    {
+        "name": "启动-登录签到",
+        "entry": "startup_dispatch",
+        "doc": "从登录界面一路点到主界面"
+    },
+    {
+        "name": "每日一条龙",
+        "entry": "main_dispatch",
+        "doc": "从主界面出发，按界面依次把每日内容做完",
+        "option": [
+            "获取感应",
+            "收取资源",
+            "办公室",
+            "工作间",
+            "顿舍",
+            "博览厅",
+            "茶室"
+        ]
+    },
+    {
+        "name": "派遣公司",
+        "entry": "main_enter_hub",
+        "doc": "从主页进入派遣公司枢纽，按选项把各个小部分做完后自动返回主页",
+        "option": [
+            "获取感应",
+            "收取资源",
+            "办公室",
+            "工作间",
+            "顿舍",
+            "博览厅",
+            "茶室"
+        ]
+    }
     ],
+    // 派遣公司各小部分的可选开关：默认全部「执行」，在 UI 里改成「跳过」即可跳过该部分。
+    // 原理：把该部分的枢纽入口节点 enabled 设为 false。被禁用的节点不会出现在
+    // hub_enter 的 next 轮询里（既不识别也不执行），于是整个小部分被整体跳过。
     "option": {
-        "任务选项1": {
-            "type": "select",
+        "获取感应": {
             "cases": [
-                {
-                    "name": "文本1",
-                    "pipeline_override": {
-                        "OcrTask": {
-                            "text": "文本1"
-                        }
-                    }
-                },
-                {
-                    "name": "文本2",
-                    "pipeline_override": {
-                        "OcrTask": {
-                            "text": "文本2"
-                        }
-                    }
-                }
-            ]
+                { "name": "执行" },
+                { "name": "跳过", "pipeline_override": { "hub_collect_sense": { "enabled": false } } }
+            ],
+            "default_case": "执行"
+        },
+        "收取资源": {
+            "cases": [
+                { "name": "执行" },
+                { "name": "跳过", "pipeline_override": { "hub_collect_resource": { "enabled": false } } }
+            ],
+            "default_case": "执行"
+        },
+        "办公室": {
+            "cases": [
+                { "name": "执行" },
+                { "name": "跳过", "pipeline_override": { "hub_enter_office": { "enabled": false } } }
+            ],
+            "default_case": "执行"
+        },
+        "工作间": {
+            "cases": [
+                { "name": "执行" },
+                { "name": "跳过", "pipeline_override": { "hub_enter_workshop": { "enabled": false } } }
+            ],
+            "default_case": "执行"
+        },
+        "顿舍": {
+            "cases": [
+                { "name": "执行" },
+                { "name": "跳过", "pipeline_override": { "hub_enter_dorm": { "enabled": false } } }
+            ],
+            "default_case": "执行"
+        },
+        "博览厅": {
+            "cases": [
+                { "name": "执行" },
+                { "name": "跳过", "pipeline_override": { "hub_enter_expo": { "enabled": false } } }
+            ],
+            "default_case": "执行"
+        },
+        "茶室": {
+            "cases": [
+                { "name": "执行" },
+                { "name": "跳过", "pipeline_override": { "hub_enter_tea_room": { "enabled": false } } }
+            ],
+            "default_case": "执行"
         }
     }
 }

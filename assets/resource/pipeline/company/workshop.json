@@ -1,0 +1,32 @@
+{
+    "workshop_enter": {
+        "doc": "【界面入口】工作间。※ 标题栏文字待核对",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "工作间",
+                "roi": [40, 10, 260, 60]
+            }
+        },
+        "next": [
+            "[JumpBack]common_close_popup",
+            "workshop_back_hub"
+        ]
+    },
+    "workshop_back_hub": {
+        "doc": "界面出口：点左上角「←」退回派遣公司枢纽",
+        "recognition": {
+            "type": "DirectHit"
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [40, 15, 90, 50]
+            }
+        },
+        "post_delay": 1500,
+        "next": [
+            "hub_enter"
+        ]
+    }
+}

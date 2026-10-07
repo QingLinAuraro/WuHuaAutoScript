@@ -1,0 +1,337 @@
+{
+    "hub_enter": {
+      "doc": "【界面入口】派遣公司枢纽。进入本界面后把所有能做的事做完再退出，不要从主页反复进出。新增可做项就加进下面的 next",
+      "recognition": {
+        "type": "OCR",
+        "param": {
+          "roi": [
+            40,
+            10,
+            260,
+            60
+          ],
+          "expected": "派遣公司"
+        }
+      },
+      "post_delay": 2000,
+      "next": [
+        "hub_collect_sense",
+        "hub_collect_resource",
+        "hub_enter_office",
+        "hub_enter_dorm",
+        "hub_enter_tea_room",
+        "hub_back_main"
+      ],
+      "$__mpe_code": {
+        "position": {
+          "x": -1207,
+          "y": 1354
+        }
+      }
+    },
+    "hub_collect_sense": {
+      "doc": "一次性UI：右下角「获取感应」。做完 next 指回 hub_enter，重新评估本界面还剩什么可做",
+      "max_hit": 1,
+      "recognition": {
+        "type": "DirectHit",
+        "param": {
+          "roi": [
+            961,
+            608,
+            105,
+            85
+          ]
+        }
+      },
+      "action": {
+        "type": "Click"
+      },
+      "post_delay": 1500,
+      "next": [
+        "[JumpBack]common_close_resources",
+        "hub_enter"
+      ],
+      "$__mpe_code": {
+        "position": {
+          "x": -1209,
+          "y": 991
+        },
+        "handleDirection": "right-left"
+      }
+    },
+    "hub_collect_resource": {
+      "doc": "一次性UI：右下角「收取资源」（收博览厅/工作间/顿舍等产出）",
+      "max_hit": 1,
+      "recognition": {
+        "type": "DirectHit",
+        "param": {
+          "roi": [
+            1087,
+            611,
+            163,
+            81
+          ]
+        }
+      },
+      "action": {
+        "type": "Click"
+      },
+      "post_delay": 1500,
+      "next": [
+        "[JumpBack]common_close_resources",
+        "hub_enter"
+      ],
+      "$__mpe_code": {
+        "position": {
+          "x": -1200,
+          "y": 1745
+        },
+        "handleDirection": "right-left"
+      }
+    },
+    "hub_enter_office": {
+      "doc": "跳转UI：点「办公室」招牌，交给 company/office.json 接管。max_hit:1 防止退出办公室后招牌还在、又被识别到反复进出",
+      "max_hit": 1,
+      "recognition": {
+        "type": "TemplateMatch",
+        "param": {
+          "template": [
+            "company/office.png"
+          ]
+        }
+      },
+      "action": {
+        "type": "Click"
+      },
+      "post_delay": 1500,
+      "next": [
+        "office_enter"
+      ],
+      "$__mpe_code": {
+        "position": {
+          "x": -875,
+          "y": 734
+        }
+      }
+    },
+    "hub_enter_workshop": {
+      "doc": "跳转UI：点「工作间」招牌（内容待搭，先占位）",
+      "max_hit": 1,
+      "recognition": {
+        "type": "TemplateMatch",
+        "param": {
+          "template": [
+            "company/work.png"
+          ]
+        }
+      },
+      "post_delay": 1500,
+      "next": [
+        "workshop_enter"
+      ],
+      "$__mpe_code": {
+        "position": {
+          "x": -485,
+          "y": 1314
+        }
+      }
+    },
+    "hub_enter_dorm": {
+      "doc": "跳转UI：点「顿舍」招牌（内容待搭，先占位）",
+      "max_hit": 1,
+      "recognition": {
+        "type": "TemplateMatch",
+        "param": {
+          "template": [
+            "company/dorm.png"
+          ]
+        }
+      },
+      "action": {
+        "type": "Click",
+        "param": {
+          "target": [
+            450,
+            475,
+            124,
+            154
+          ]
+        }
+      },
+      "post_delay": 1500,
+      "next": [
+        "dorm_enter"
+      ],
+      "$__mpe_code": {
+        "position": {
+          "x": -254,
+          "y": 642
+        }
+      }
+    },
+    "hub_enter_expo": {
+      "doc": "跳转UI：点「博览厅」招牌（内容待搭，先占位）",
+      "max_hit": 1,
+      "recognition": {
+        "type": "TemplateMatch",
+        "param": {
+          "template": [
+            "company/hall.png"
+          ]
+        }
+      },
+      "post_delay": 1500,
+      "next": [
+        "expo_enter"
+      ],
+      "$__mpe_code": {
+        "position": {
+          "x": -177,
+          "y": 1621
+        }
+      }
+    },
+    "hub_enter_tea_room": {
+      "doc": "跳转UI：点「茶室」招牌（内容待搭，先占位）",
+      "max_hit": 1,
+      "recognition": {
+        "type": "TemplateMatch",
+        "param": {
+          "template": [
+            "company/tearoom.png"
+          ]
+        }
+      },
+      "action": {
+        "type": "Click",
+        "param": {
+          "target": [
+            977,
+            403,
+            124,
+            143
+          ]
+        }
+      },
+      "post_delay": 1500,
+      "next": [
+        "tea_room_enter"
+      ],
+      "$__mpe_code": {
+        "position": {
+          "x": -237,
+          "y": 1006
+        }
+      }
+    },
+    "hub_back_main": {
+      "doc": "界面出口：点左上角「←」退回主页。DirectHit 兜底，放在 next 最后——上面全部失配才会轮到它。※ 若刚进界面就秒退，给 hub_enter 加 post_wait_freezes 等画面稳定",
+      "recognition": {
+        "type": "OCR",
+        "param": {
+          "roi": [
+            0,
+            0,
+            205,
+            70
+          ],
+          "expected": [
+            "派遣公司"
+          ]
+        }
+      },
+      "action": {
+        "type": "Click",
+        "param": {
+          "target": [
+            30,
+            9,
+            140,
+            49
+          ]
+        }
+      },
+      "post_delay": 1500,
+      "next": [
+        "main_dispatch"
+      ],
+      "$__mpe_code": {
+        "position": {
+          "x": -796,
+          "y": 1862
+        },
+        "handleDirection": "top-bottom"
+      }
+    },
+    "$__mpe_config_hub.json": {
+      "$__mpe_code": {
+        "prefix": "",
+        "coordinateMode": "absolute-v1",
+        "savedViewport": {
+          "x": 1398,
+          "y": -1714,
+          "zoom": 1
+        },
+        "filename": "hub.json",
+        "version": "v2.0.7"
+      }
+    },
+    "$__mpe_external_office_enter_hub.json": {
+      "$__mpe_code": {
+        "position": {
+          "x": -613,
+          "y": 727
+        }
+      }
+    },
+    "$__mpe_external_workshop_enter_hub.json": {
+      "$__mpe_code": {
+        "position": {
+          "x": -164,
+          "y": 1413
+        }
+      }
+    },
+    "$__mpe_external_dorm_enter_hub.json": {
+      "$__mpe_code": {
+        "position": {
+          "x": 128,
+          "y": 698
+        }
+      }
+    },
+    "$__mpe_external_expo_enter_hub.json": {
+      "$__mpe_code": {
+        "position": {
+          "x": 213,
+          "y": 1709
+        }
+      }
+    },
+    "$__mpe_external_tea_room_enter_hub.json": {
+      "$__mpe_code": {
+        "position": {
+          "x": 176,
+          "y": 1096
+        }
+      }
+    },
+    "$__mpe_external_main_dispatch_hub.json": {
+      "$__mpe_code": {
+        "position": {
+          "x": -782,
+          "y": 2281
+        },
+        "handleDirection": "top-bottom"
+      }
+    },
+    "$__mpe_external_common_close_resources_hub.json": {
+      "$__mpe_code": {
+        "position": {
+          "x": -1592,
+          "y": 1436
+        },
+        "handleDirection": "right-left"
+      }
+    }
+}

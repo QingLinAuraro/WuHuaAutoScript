@@ -1,0 +1,45 @@
+{
+  "$__mpe_config_resources.json": {
+    "$__mpe_code": {
+      "prefix": "",
+      "coordinateMode": "absolute-v1",
+      "savedViewport": {
+        "x": 361,
+        "y": 85,
+        "zoom": 1
+      },
+      "filename": "resources.json",
+      "version": "v2.0.7"
+    }
+  },
+  "common_close_resources": {
+    "doc": "关闭奖励获取界面",
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "common/close_resources.png"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          948,
+          90,
+          283,
+          521
+        ]
+      }
+    },
+    "post_delay": 1500,
+    "$__mpe_code": {
+      "position": {
+        "x": 197,
+        "y": 106
+      }
+    }
+  }
+    
+}

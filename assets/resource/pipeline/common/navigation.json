@@ -1,0 +1,9 @@
+{
+    "common_check_main": {
+        "doc": "识别到派遣公司入口=已在主界面",
+        "recognition": "OCR",
+        "expected": "派遣公司",
+        "roi": [1000, 380, 280, 160],
+        "next": []
+    }
+}

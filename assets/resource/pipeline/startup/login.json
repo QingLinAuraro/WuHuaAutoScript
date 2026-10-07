@@ -1,0 +1,95 @@
+{
+    "startup_dispatch": {
+      "doc": "启动调度：直接命中，尝试所有可能的界面",
+      "timeout": 120000,
+      "next": [
+        "startup_enter_game",
+        "[JumpBack]common_close_popup",
+        "[JumpBack]common_close_resources",
+        "common_check_main"
+      ],
+      "$__mpe_code": {
+        "position": {
+          "x": -75,
+          "y": 51
+        }
+      }
+    },
+    "startup_enter_game": {
+      "doc": "登录界面：点击任意处进入游戏",
+      "recognition": {
+        "type": "TemplateMatch",
+        "param": {
+          "roi": [
+            492,
+            572,
+            300,
+            39
+          ],
+          "template": [
+            "startup/title_start.png"
+          ]
+        }
+      },
+      "action": {
+        "type": "Click",
+        "param": {
+          "target": [
+            329,
+            120,
+            743,
+            428
+          ]
+        }
+      },
+      "post_delay": 1500,
+      "next": [
+        "[JumpBack]common_close_popup",
+        "[JumpBack]common_close_resources",
+        "common_check_main"
+      ],
+      "$__mpe_code": {
+        "position": {
+          "x": 356,
+          "y": -338
+        }
+      }
+    },
+    "$__mpe_config_login.json": {
+      "$__mpe_code": {
+        "prefix": "",
+        "coordinateMode": "absolute-v1",
+        "savedViewport": {
+          "x": -56,
+          "y": 283,
+          "zoom": 1
+        },
+        "filename": "login.json",
+        "version": "v2.0.7"
+      }
+    },
+    "$__mpe_external_common_close_popup_login.json": {
+      "$__mpe_code": {
+        "position": {
+          "x": 951,
+          "y": -85
+        }
+      }
+    },
+    "$__mpe_external_common_check_main_login.json": {
+      "$__mpe_code": {
+        "position": {
+          "x": 954,
+          "y": 276
+        }
+      }
+    },
+    "$__mpe_external_common_close_resources_login.json": {
+      "$__mpe_code": {
+        "position": {
+          "x": 948,
+          "y": 68
+        }
+      }
+    }
+}

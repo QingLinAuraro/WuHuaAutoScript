@@ -1,0 +1,110 @@
+{
+    "tea_room_enter": {
+      "doc": "【界面入口】茶室。待补：选茶叶 → 邀请器者 → 对话。※ 标题栏文字待核对",
+      "recognition": {
+        "type": "OCR",
+        "param": {
+          "roi": [
+            0,
+            0,
+            199,
+            73
+          ],
+          "expected": "茶室"
+        }
+      },
+      "next": [
+        "tea_room_back_hub"
+      ],
+      "$__mpe_code": {
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    },
+    "tea_room_back_hub": {
+      "doc": "界面出口：点左上角「←」退回派遣公司枢纽",
+      "max_hit": 5,
+      "recognition": {
+        "type": "OCR",
+        "param": {
+          "roi": [
+            0,
+            2,
+            161,
+            62
+          ],
+          "expected": [
+            "茶室"
+          ]
+        }
+      },
+      "action": {
+        "type": "Click",
+        "param": {
+          "target": [
+            30,
+            9,
+            140,
+            49
+          ]
+        }
+      },
+      "post_delay": 1500,
+      "next": [
+        "hub_enter"
+      ],
+      "$__mpe_code": {
+        "position": {
+          "x": 329,
+          "y": 152
+        }
+      }
+    },
+    "$__mpe_config_tea_room.json": {
+      "$__mpe_code": {
+        "prefix": "",
+        "coordinateMode": "absolute-v1",
+        "savedViewport": {
+          "x": 319,
+          "y": 214,
+          "zoom": 1
+        },
+        "filename": "tea_room.json",
+        "version": "v2.0.7"
+      }
+    },
+    "drink_tea": {
+      "doc": "预留：喝茶流程（选茶叶 → 邀请器者 → 对话）。功能未实现，暂不接入 tea_room_enter.next 并置 enabled=false；以后补完再把 enabled 改回 true、并加回 next",
+      "enabled": false,
+      "recognition": {
+        "type": "TemplateMatch",
+        "param": {
+          "roi": [
+            606,
+            187,
+            118,
+            85
+          ],
+          "template": [
+            "company/tea_room/drink_tea.png"
+          ]
+        }
+      },
+      "$__mpe_code": {
+        "position": {
+          "x": 331,
+          "y": -151
+        }
+      }
+    },
+    "$__mpe_external_hub_enter_tea_room.json": {
+      "$__mpe_code": {
+        "position": {
+          "x": 651,
+          "y": 242
+        }
+      }
+    }
+}

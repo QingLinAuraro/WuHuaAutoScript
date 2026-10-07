@@ -1,0 +1,121 @@
+{
+    "office_enter": {
+      "doc": "【界面入口】办公室。锚点故意用「博行总控」而不是标题栏——易物机浮层打开时标题栏仍是「办公室」，会误判成还在办公室",
+      "recognition": {
+        "type": "TemplateMatch",
+        "param": {
+          "roi": [
+            512,
+            530,
+            279,
+            110
+          ],
+          "template": [
+            "company/office/check.png"
+          ]
+        }
+      },
+      "next": [
+        "office_enter_exchange",
+        "office_back_hub"
+      ],
+      "$__mpe_code": {
+        "position": {
+          "x": -13,
+          "y": 143
+        }
+      }
+    },
+    "office_enter_exchange": {
+      "doc": "跳转UI：点左侧「博行易物机」，交给 company/exchange.json 接管。max_hit:1 防止退出来后又反复进",
+      "max_hit": 1,
+      "recognition": {
+        "type": "TemplateMatch",
+        "param": {
+          "template": [
+            "company/office/purchase.png"
+          ]
+        }
+      },
+      "action": {
+        "type": "Click"
+      },
+      "post_delay": 1500,
+      "next": [
+        "exchange_enter"
+      ],
+      "$__mpe_code": {
+        "position": {
+          "x": 356,
+          "y": 4
+        }
+      }
+    },
+    "office_back_hub": {
+      "doc": "界面出口：点左上角「←」退回派遣公司枢纽，枢纽会重新扫描还剩哪些房间要去",
+      "recognition": {
+        "type": "OCR",
+        "param": {
+          "roi": [
+            0,
+            0,
+            205,
+            70
+          ],
+          "expected": [
+            "办公室"
+          ]
+        }
+      },
+      "action": {
+        "type": "Click",
+        "param": {
+          "target": [
+            30,
+            9,
+            140,
+            49
+          ]
+        }
+      },
+      "post_delay": 1500,
+      "next": [
+        "hub_enter"
+      ],
+      "$__mpe_code": {
+        "position": {
+          "x": 355,
+          "y": 346
+        }
+      }
+    },
+    "$__mpe_config_office.json": {
+      "$__mpe_code": {
+        "prefix": "",
+        "coordinateMode": "absolute-v1",
+        "savedViewport": {
+          "x": 363,
+          "y": 91,
+          "zoom": 0.79
+        },
+        "filename": "office.json",
+        "version": "v2.0.7"
+      }
+    },
+    "$__mpe_external_exchange_enter_office.json": {
+      "$__mpe_code": {
+        "position": {
+          "x": 673,
+          "y": 86
+        }
+      }
+    },
+    "$__mpe_external_hub_enter_office.json": {
+      "$__mpe_code": {
+        "position": {
+          "x": 682,
+          "y": 426
+        }
+      }
+    }
+}

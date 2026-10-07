@@ -1,0 +1,32 @@
+{
+    "expo_enter": {
+        "doc": "【界面入口】博览厅。※ 标题栏文字待核对",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "博览厅",
+                "roi": [40, 10, 260, 60]
+            }
+        },
+        "next": [
+            "[JumpBack]common_close_popup",
+            "expo_back_hub"
+        ]
+    },
+    "expo_back_hub": {
+        "doc": "界面出口：点左上角「←」退回派遣公司枢纽",
+        "recognition": {
+            "type": "DirectHit"
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [40, 15, 90, 50]
+            }
+        },
+        "post_delay": 1500,
+        "next": [
+            "hub_enter"
+        ]
+    }
+}

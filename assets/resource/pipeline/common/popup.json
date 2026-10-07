@@ -1,0 +1,39 @@
+{
+    "common_close_popup": {
+      "doc": "见X就点，直到回到主界面。签到日历/公告/活动弹窗通吃",
+      "recognition": {
+        "type": "TemplateMatch",
+        "param": {
+          "template": [
+            "common/btn_close_announce.png",
+            "common/btn_close_signin.png",
+            "common/btn_close_popup_1.png"
+          ],
+          "threshold": 0.7
+        }
+      },
+      "action": {
+        "type": "Click"
+      },
+      "post_delay": 1500,
+      "$__mpe_code": {
+        "position": {
+          "x": -118,
+          "y": 185
+        }
+      }
+    },
+    "$__mpe_config_popup.json": {
+      "$__mpe_code": {
+        "prefix": "",
+        "coordinateMode": "absolute-v1",
+        "savedViewport": {
+          "x": 645,
+          "y": -157,
+          "zoom": 1.5
+        },
+        "filename": "popup.json",
+        "version": "v2.0.7"
+      }
+    }
+}
