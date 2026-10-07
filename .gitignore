@@ -414,10 +414,10 @@ FodyWeavers.xsd
 # VS Code files for those working on multiple tools
 **/.vscode/*
 .vscode/*
-!.vscode/settings.json
+# !.vscode/settings.json
 # !.vscode/tasks.json
 # !.vscode/launch.json
-!.vscode/extensions.json
+# !.vscode/extensions.json
 *.code-workspace
 
 # Local History for Visual Studio Code
@@ -440,10 +440,7 @@ enc_temp_folder/*
 .nuke/temp/*
 
 # Build
-deps/*
-!deps/tools/
-deps/tools/*
-!deps/tools/*.schema.json
+deps/
 build
 install
 
@@ -457,3 +454,32 @@ screenshots/
 
 # WorkBuddy 本地工作数据（会话记忆等），不入库
 .workbuddy/
+
+# ==========================================================================
+# MaaPracticeBoilerplate 脚手架 / 本地工具（仅本机使用，不随仓库分发）
+# 文件保留在本地磁盘，只是不再纳入版本控制
+# ==========================================================================
+
+# GitHub 模板与 CI（项目不再走上游 CI）
+.github/
+
+# 官方示例 agent（项目未使用）
+agent/
+
+# 官方文档（保留自建的 docs/devlog.md）
+docs/zh_cn/
+docs/.markdownlint.yaml
+
+# 脚手架工具脚本（保留自建的 run_task.py / test_connection.py）
+tools/configure.py
+tools/install.py
+tools/requirements.txt
+tools/validate_schema.py
+
+# 前端构建 / 格式化配置
+package.json
+package-lock.json
+pnpm-lock.yaml
+maatools.config.mts
+.prettierrc
+.prettierignore
