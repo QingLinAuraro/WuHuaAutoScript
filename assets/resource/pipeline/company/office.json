@@ -80,12 +80,13 @@
       },
       "post_delay": 1500,
       "next": [
+        "office_back_hub",
         "hub_enter"
       ],
       "$__mpe_code": {
         "position": {
-          "x": 355,
-          "y": 346
+          "x": 358,
+          "y": 338
         }
       }
     },
@@ -94,9 +95,9 @@
         "prefix": "",
         "coordinateMode": "absolute-v1",
         "savedViewport": {
-          "x": 363,
-          "y": 91,
-          "zoom": 0.79
+          "x": 236,
+          "y": 157,
+          "zoom": 1
         },
         "filename": "office.json",
         "version": "v2.0.7"
@@ -113,8 +114,8 @@
     "$__mpe_external_hub_enter_office.json": {
       "$__mpe_code": {
         "position": {
-          "x": 682,
-          "y": 426
+          "x": 689,
+          "y": 428
         }
       }
     }

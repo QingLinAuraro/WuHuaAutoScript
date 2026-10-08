@@ -1,1 +1,221 @@
-{}
+{
+  "$__mpe_config_task.json": {
+    "$__mpe_code": {
+      "prefix": "",
+      "coordinateMode": "absolute-v1",
+      "savedViewport": {
+        "x": -50,
+        "y": 51,
+        "zoom": 0.79
+      },
+      "filename": "task.json",
+      "version": "v2.0.7"
+    }
+  },
+  "task_enter": {
+    "post_delay": 1500,
+    "next": [
+      "daily_task"
+    ],
+    "$__mpe_code": {
+      "position": {
+        "x": 114,
+        "y": 21
+      }
+    }
+  },
+  "daily_task": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "roi": [
+          12,
+          7,
+          188,
+          56
+        ],
+        "template": [
+          "task/daily_task.png"
+        ]
+      }
+    },
+    "post_delay": 1500,
+    "next": [
+      "all_get",
+      "check_finished",
+      "switch_to_weekly"
+    ],
+    "$__mpe_code": {
+      "position": {
+        "x": 437,
+        "y": -10
+      }
+    }
+  },
+  "weekly_task": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "roi": [
+          12,
+          7,
+          188,
+          56
+        ],
+        "template": [
+          "task/weekly_task.png"
+        ]
+      }
+    },
+    "post_delay": 1500,
+    "next": [
+      "all_get",
+      "check_finished",
+      "back_to_main"
+    ],
+    "$__mpe_code": {
+      "position": {
+        "x": 444,
+        "y": 526
+      }
+    }
+  },
+  "all_get": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "roi": [
+          690,
+          646,
+          193,
+          73
+        ],
+        "expected": [
+          "全部领取"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "post_delay": 5000,
+    "next": [
+      "[JumpBack]common_close_resources",
+      "check_finished",
+      "switch_to_weekly",
+      "back_to_main"
+    ],
+    "$__mpe_code": {
+      "position": {
+        "x": 774,
+        "y": 208
+      }
+    }
+  },
+  "$__mpe_external_common_close_resources_task.json": {
+    "$__mpe_code": {
+      "position": {
+        "x": 1125,
+        "y": 541
+      }
+    }
+  },
+  "check_finished": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "roi": [
+          683,
+          284,
+          212,
+          131
+        ],
+        "template": [
+          "task/finished.png"
+        ]
+      }
+    },
+    "post_delay": 1500,
+    "next": [
+      "switch_to_weekly",
+      "back_to_main"
+    ],
+    "$__mpe_code": {
+      "position": {
+        "x": 1088,
+        "y": -52
+      }
+    }
+  },
+  "switch_to_weekly": {
+    "max_hit": 1,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "roi": [
+          63,
+          306,
+          132,
+          108
+        ],
+        "template": [
+          "task/switch_to_weekly.png"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "post_delay": 1500,
+    "next": [
+      "weekly_task"
+    ],
+    "$__mpe_code": {
+      "position": {
+        "x": 133,
+        "y": 291
+      },
+      "handleDirection": "right-left"
+    }
+  },
+  "back_to_main": {
+    "max_hit": 5,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "roi": [
+          12,
+          7,
+          188,
+          56
+        ],
+        "template": [
+          "task/daily_task.png",
+          "task/weekly_task.png"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "post_delay": 1000,
+    "next": [
+      "back_to_main",
+      "main_dispatch"
+    ],
+    "$__mpe_code": {
+      "position": {
+        "x": 1449,
+        "y": 307
+      }
+    }
+  },
+  "$__mpe_external_main_dispatch_task.json": {
+    "$__mpe_code": {
+      "position": {
+        "x": 1741,
+        "y": 396
+      }
+    }
+  }
+}

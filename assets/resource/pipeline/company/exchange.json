@@ -54,9 +54,9 @@
         "prefix": "",
         "coordinateMode": "absolute-v1",
         "savedViewport": {
-          "x": 131,
-          "y": -172,
-          "zoom": 1.01
+          "x": 300,
+          "y": -192,
+          "zoom": 1
         },
         "filename": "exchange.json",
         "version": "v2.0.7"

@@ -24,8 +24,8 @@
       ],
       "$__mpe_code": {
         "position": {
-          "x": -1207,
-          "y": 1354
+          "x": -1209,
+          "y": 1348
         }
       }
     },
@@ -148,15 +148,7 @@
         }
       },
       "action": {
-        "type": "Click",
-        "param": {
-          "target": [
-            450,
-            475,
-            124,
-            154
-          ]
-        }
+        "type": "Click"
       },
       "post_delay": 1500,
       "next": [
@@ -203,15 +195,7 @@
         }
       },
       "action": {
-        "type": "Click",
-        "param": {
-          "target": [
-            977,
-            403,
-            124,
-            143
-          ]
-        }
+        "type": "Click"
       },
       "post_delay": 1500,
       "next": [
@@ -268,8 +252,8 @@
         "prefix": "",
         "coordinateMode": "absolute-v1",
         "savedViewport": {
-          "x": 1398,
-          "y": -1714,
+          "x": 1368,
+          "y": -1612,
           "zoom": 1
         },
         "filename": "hub.json",
@@ -295,8 +279,8 @@
     "$__mpe_external_dorm_enter_hub.json": {
       "$__mpe_code": {
         "position": {
-          "x": 128,
-          "y": 698
+          "x": 97,
+          "y": 722
         }
       }
     },
@@ -319,8 +303,8 @@
     "$__mpe_external_main_dispatch_hub.json": {
       "$__mpe_code": {
         "position": {
-          "x": -782,
-          "y": 2281
+          "x": -791,
+          "y": 2274
         },
         "handleDirection": "top-bottom"
       }
